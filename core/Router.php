@@ -2,16 +2,14 @@
 
 namespace core;
 
-use App\Middleware\JwtMiddleware;
+use App\Middleware\AuthMiddleware;
 
 class Router {
     private $routes;
     private $protectedRoutes;
-    private $key;
 
-    public function __construct($routes, $key) {
+    public function __construct($routes) {
         $this->routes = $routes;
-        $this->key = $key;
         $this->protectedRoutes = $routes['protected'] ?? [];
     }
 
@@ -19,10 +17,10 @@ class Router {
         $method = $_SERVER['REQUEST_METHOD'];
         $url = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-        // Verifica el token para rutas protegidas
+        // Verifica si la ruta está protegida
         if (in_array($url, $this->protectedRoutes)) {
-            $jwtMiddleware = new JwtMiddleware($this->key);
-            $jwtMiddleware->handle();
+            $authMiddleware = new AuthMiddleware();
+            $authMiddleware->handle();
         }
 
         // Verifica si la ruta y el método existen
@@ -30,7 +28,7 @@ class Router {
             $controllerAction = $this->routes[$method][$url];
             list($controllerName, $method) = explode('@', $controllerAction);
 
-            $controllerClass = "App\\controllers\\$controllerName";
+            $controllerClass = "App\\Controllers\\$controllerName";
             if (class_exists($controllerClass)) {
                 $controllerInstance = new $controllerClass();
                 if (method_exists($controllerInstance, $method)) {

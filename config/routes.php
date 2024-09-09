@@ -4,6 +4,7 @@ return [
     'GET' => [
         '' => 'HomeController@index',
         'home' => 'HomeController@index',
+        'desarrollos' => 'DesarrollosController@index',
         'login' => 'AuthController@showLoginForm', 
         'register' => 'RegisterController@showForm', 
     ],
@@ -13,6 +14,7 @@ return [
     ],
     'protected' => [
         '',
-        'home',  // Indica que 'home' es una ruta protegida
+        'home',
+        'desarrollos',
     ],
 ];

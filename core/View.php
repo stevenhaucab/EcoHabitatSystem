@@ -2,17 +2,26 @@
 
 namespace core;
 
-class View {
-    public static function render($view, $data = []) {
-        // Convierte cada clave del array de datos en una variable
+class View
+{
+    public static function render($view, $data = [])
+    {
+        // Convertir el array $data en variables individuales
         extract($data);
 
-        // Incluye el archivo de vista
-        $filePath = __DIR__ . '/../src/views/' . $view . '.php';
-        if (file_exists($filePath)) {
-            require $filePath;
+        // Asegurarse de que el archivo tenga la extensión .php
+        if (strpos($view, '.php') === false) {
+            $view .= '.php';
+        }
+
+        // Definir el path de las vistas
+        $file = __DIR__ . '/../src/views/' . $view;
+
+        // Verificar si la vista existe
+        if (file_exists($file)) {
+            require $file;
         } else {
-            echo "View not found: " . $view;
+            die("View not found: " . $view);
         }
     }
 }

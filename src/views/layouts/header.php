@@ -60,6 +60,7 @@
             <div class="side-nav">
                 <div class="side-nav-inner">
                     <!-- Side navigation menu -->
+                    <?php include 'menu.php'; ?>
                 </div>
             </div>
             <!-- Side Nav END -->

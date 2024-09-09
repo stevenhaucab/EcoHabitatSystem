@@ -5,7 +5,7 @@ namespace App\Controllers;
 use core\Controller;
 use core\View;
 
-class HomeController extends Controller {
+class DesarrollosController extends Controller {
     public function index() {
         $data = [
             'title' => 'System',
@@ -13,6 +13,6 @@ class HomeController extends Controller {
         ];
 
         // Renderizar la vista 'home'
-        View::render('home', $data);
+        View::render('desarrollos/index.php', $data);
     }
 }

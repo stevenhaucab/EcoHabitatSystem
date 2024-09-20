@@ -25,8 +25,8 @@
                             <img src="/images/logo/logo-white.png" alt="">
                         </div>
                         <div>
-                            <h1 class="text-white m-b-20 font-weight-normal">Exploring EcoHabitatSystem</h1>
-                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Climb leg rub face on everything give attitude nap all day for under the bed. Chase mice attack feet but rub face on everything hopped up.</p>
+                            <h1 class="text-white m-b-20 font-weight-normal">Sistema Cedral</h1>
+                            <p class="text-white font-size-16 lh-2 w-80 opacity-08">Plataforma para la gestión eficiente de lotes, desarrollos y pagos. Organiza inventarios y controla transacciones fácilmente, diseñado para El Cedral Eco Hábitat.</p>
                         </div>
                         <div class="d-flex justify-content-between">
                             <span class="text-white">© <?= date('Y'); ?> EcoHabitatSystem</span>
@@ -45,8 +45,8 @@
                     <div class="container h-100">
                         <div class="row no-gutters h-100 align-items-center">
                             <div class="col-md-8 col-lg-7 col-xl-6 mx-auto">
-                                <h2>Sign In</h2>
-                                <p class="m-b-30">Enter your credentials to get access</p>
+                                <h2>Iniciar Sesión</h2>
+                                <p class="m-b-30">Ingrese sus credenciales para obtener acceso</p>
                                 
                                 <!-- Mostrar error si existe -->
                                 <?php if (!empty($error)): ?>
@@ -57,27 +57,23 @@
 
                                 <form method="POST" action="/login">
                                     <div class="form-group">
-                                        <label class="font-weight-semibold" for="userName">Username:</label>
+                                        <label class="font-weight-semibold" for="userName">Usuario:</label>
                                         <div class="input-affix">
                                             <i class="prefix-icon anticon anticon-user"></i>
-                                            <input type="text" class="form-control" id="userName" name="user" placeholder="Username" required>
+                                            <input type="text" class="form-control" id="userName" name="user" placeholder="Usuario" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="font-weight-semibold" for="password">Password:</label>
-                                        <a class="float-right font-size-13 text-muted" href="">Forget Password?</a>
+                                        <label class="font-weight-semibold" for="password">Contraseña:</label>
+                                        <a class="float-right font-size-13 text-muted" href="">Olvidaste la Contraseña?</a>
                                         <div class="input-affix m-b-10">
                                             <i class="prefix-icon anticon anticon-lock"></i>
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <span class="font-size-13 text-muted">
-                                                Don't have an account? 
-                                                <a class="small" href=""> Signup</a>
-                                            </span>
-                                            <button type="submit" class="btn btn-primary">Sign In</button>
+                                            <button type="submit" class="btn btn-primary">Entrar</button>
                                         </div>
                                     </div>
                                 </form>

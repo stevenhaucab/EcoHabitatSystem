@@ -11,7 +11,7 @@
         </a>
         <ul class="dropdown-menu">
             <li class="active">
-                <a href="index.html">Desarrollos</a>
+                <a href="/desarrollos">Desarrollos</a>
             </li>
             <li>
                 <a href="index-crm.html">Plan de Pagos</a>

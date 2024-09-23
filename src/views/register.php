@@ -13,17 +13,9 @@
     <div class="container">
         <h2>Registrar nuevo usuario</h2>
 
-        <!-- Mostrar mensaje de error si existe -->
-        <?php if (!empty($error)): ?>
-            <div class="alert alert-danger">
-                <?= $error ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Mostrar mensaje de éxito si existe -->
-        <?php if (!empty($success)): ?>
-            <div class="alert alert-success">
-                <?= $success ?>
+        <?php if (!empty($error) || !empty($success)): ?>
+            <div class="alert <?= !empty($error) ? 'alert-danger' : 'alert-success' ?>">
+                <?= !empty($error) ? $error : $success ?>
             </div>
         <?php endif; ?>
 

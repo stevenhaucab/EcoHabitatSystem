@@ -3,6 +3,7 @@
 // config/config.php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// Cargar las variables de entorno del archivo .env
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 

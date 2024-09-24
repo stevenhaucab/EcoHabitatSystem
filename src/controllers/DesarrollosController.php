@@ -8,6 +8,7 @@ use core\Database;
 use Exception;
 use src\models\DesarrolloModel;
 
+
 class DesarrollosController extends Controller
 {
     private $conn;
@@ -90,14 +91,14 @@ class DesarrollosController extends Controller
             $status = $_POST['status'] ?? 1;
 
             if (!$nombreDesarrollo) {
-                $this->showFormWithError('El nombre del desarrollo es obligatorio.');
+                $this->showFormWithError('El nombre del desarrollo es obligatorio.', 'Editar Desarrollo');
                 return;
             }
 
             try {
                 $desarrolloModel = new DesarrolloModel($this->conn);
                 $desarrolloModel->updateDesarrollo($id, $nombreDesarrollo, $status);
-                $this->showFormWithSuccess('Desarrollo actualizado exitosamente.');
+                $this->showFormWithSuccess('Desarrollo actualizado exitosamente.', 'Editar Desarrollo', $id);
             } catch (Exception $e) {
                 $this->showFormWithError('Error al actualizar el desarrollo: ' . $e->getMessage());
             }
@@ -108,11 +109,21 @@ class DesarrollosController extends Controller
 
     private function showFormWithError($error)
     {
-        View::render('desarrollos/formulario.php', ['error' => $error]);
+        // Guardar el error en una variable de sesión temporalmente
+        $_SESSION['error'] = $error;
+
+        // Redirigir al index de desarrollos
+        header('Location: /desarrollos');
+        exit; // Asegurarse de que el script no continúe ejecutándose
     }
 
     private function showFormWithSuccess($success)
     {
-        View::render('desarrollos/formulario.php', ['success' => $success]);
+        // Guardar el mensaje de éxito en una variable de sesión temporalmente
+        $_SESSION['success'] = $success;
+
+        // Redirigir al index de desarrollos
+        header('Location: /desarrollos');
+        exit; // Asegurarse de que el script no continúe ejecutándose
     }
 }

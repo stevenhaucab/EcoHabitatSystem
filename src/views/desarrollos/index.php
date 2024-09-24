@@ -11,6 +11,24 @@
                 <a href="/nuevo-desarrollo" class="btn btn-primary">Agregar Nuevo Desarrollo</a>
             </div>
 
+            <!-- Mostrar mensaje de error si existe -->
+            <?php if (!empty($_SESSION['error'])): ?>
+                <div class="alert alert-danger">
+                    <?= $_SESSION['error']; ?>
+                </div>
+                <?php unset($_SESSION['error']); // Eliminar el mensaje de error después de mostrarlo 
+                ?>
+            <?php endif; ?>
+
+            <!-- Mostrar mensaje de éxito si existe -->
+            <?php if (!empty($_SESSION['success'])): ?>
+                <div class="alert alert-success">
+                    <?= $_SESSION['success']; ?>
+                </div>
+                <?php unset($_SESSION['success']); // Eliminar el mensaje de éxito después de mostrarlo 
+                ?>
+            <?php endif; ?>
+
             <div class="table-responsive">
                 <!-- Mostrar la lista de desarrollos -->
                 <?php if (!empty($desarrollos)): ?>
@@ -25,9 +43,9 @@
                         <tbody>
                             <?php foreach ($desarrollos as $desarrollo): ?>
                                 <tr>
-                                    <td><?= $desarrollo['name']; ?></td>
+                                    <td><?= strtoupper($desarrollo['name']); ?></td>
                                     <td>
-                                        <button class="btn btn-warning btn-sm">Editar</button>
+                                        <a href="/editar-desarrollo/<?= $desarrollo['id']; ?>" class="btn btn-warning btn-sm">Editar</a>
                                         <button class="btn btn-info btn-sm">Ver Etapas</button>
                                     </td>
                                 </tr>

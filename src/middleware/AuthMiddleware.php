@@ -5,7 +5,9 @@ namespace App\Middleware;
 class AuthMiddleware {
 
     public function handle() {
-        session_start(); // Inicia la sesión
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
         // Verifica si el usuario está autenticado
         if (!isset($_SESSION['user'])) {

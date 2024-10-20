@@ -13,6 +13,10 @@ return [
         'etapas/desarrollo/{idDesarrollo}' => 'EtapasController@index',
         'nuevo-etapa' => 'EtapasController@create',
         'editar-etapa/{id}' => 'EtapasController@edit',
+        'lotes' => 'LotesController@index',
+        'lotes/desarrollo/{idDesarrollo}' => 'LotesController@index',
+        'nuevo-lote' => 'LotesController@create',
+        'editar-lote/{id}' => 'LotesController@edit',
     ],
     'POST' => [
         'login' => 'AuthController@login',
@@ -21,6 +25,8 @@ return [
         'editar-desarrollo/{id}' => 'DesarrollosController@update',
         'nuevo-etapa' => 'EtapasController@store',
         'editar-etapa/{id}' => 'EtapasController@update',
+        'nuevo-lote' => 'LotesController@store',
+        'editar-lote/{id}' => 'LotesController@update',
     ],
     'protected' => [
         '',

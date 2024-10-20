@@ -1,19 +1,11 @@
 <?php
 
-// config/config.php
-require_once __DIR__ . '/../vendor/autoload.php';
-
-// Cargar las variables de entorno del archivo .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
-$dotenv->load();
-
 return [
     'db' => [
-        'host' => $_ENV['DB_HOST'],
-        'port' => $_ENV['DB_PORT'],
-        'dbname' => $_ENV['DB_NAME'],
-        'user' => $_ENV['DB_USER'],
-        'password' => $_ENV['DB_PASS'],
+        'host' => 'localhost',
+        'port' => '3306',
+        'dbname' => 'cedral_db',
+        'user' => 'root',
+        'password' => '',
     ],
-    'jwt_key' => $_ENV['JWT_KEY']
 ];

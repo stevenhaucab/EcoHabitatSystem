@@ -22,7 +22,7 @@ class AuthController extends Controller
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        
+
         // Verificar si el formulario fue enviado por POST
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Obtener los valores del formulario
@@ -35,18 +35,12 @@ class AuthController extends Controller
                 return;
             }
 
-            // Configuración de la conexión (puede venir de un archivo .env o config.php)
-            $dbConfig = [
-                'host' => $_ENV['DB_HOST'] ?? 'localhost',
-                'port' => $_ENV['DB_PORT'] ?? '3306',
-                'dbname' => $_ENV['DB_NAME'] ?? 'cedral_db',
-                'user' => $_ENV['DB_USER'] ?? 'root',
-                'password' => $_ENV['DB_PASS'] ?? '',
-            ];
+            // Configuración de la conexión desde config.php
+            $dbConfig = require __DIR__ . '/../../config/config.php';
 
             // Conectar a la base de datos usando la clase Database
             try {
-                $db = new Database($dbConfig);
+                $db = new Database($dbConfig['db']);
                 $conn = $db->connect();
 
                 // Consultar si el usuario existe en la base de datos

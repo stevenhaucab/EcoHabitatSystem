@@ -25,7 +25,7 @@ class DesarrollosController extends Controller
     {
         try {
             $desarrolloModel = new DesarrolloModel($this->conn);
-            $desarrollos = $desarrolloModel->getAllDesarrollos();
+            $desarrollos = $desarrolloModel->getAllDesarrollos() ?? [];
             $data = ['title' => 'Desarrollos', 'desarrollos' => $desarrollos];
             View::render('desarrollos/index.php', $data);
         } catch (Exception $e) {
